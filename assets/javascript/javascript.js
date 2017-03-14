@@ -1,7 +1,6 @@
-$( document ).ready(function() {
+$(document).ready(function () {
 
-
-
+	// initialize variables
 	var redNum = 0;
 	var greenNum = 0;
 	var blueNum = 0;
@@ -12,14 +11,21 @@ $( document ).ready(function() {
 	var wins = 0;
 	var loses = 0;
 
+	$("#gameTitle").html("Crystals Collector").hide().slideDown({duration:2000, queue:false}).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(3000);
+	$(".sDown").hide().slideDown({duration:2000, queue:false}).fadeIn(500);
+
+	// create and store random numbers from 1 - 12 for each crystal
 	redNum = Math.floor(Math.random() * 12) + 1;
 	blueNum = Math.floor(Math.random() * 12) + 1;
 	greenNum = Math.floor(Math.random() * 12) + 1;
 	yellowNum = Math.floor(Math.random() * 12) + 1;
 
+	// create the random target number, 19 - 120
 	targetNum = Math.floor(Math.random() * 102) + 19;
+	// refresh html with target number
 	$("#targetNumber").html("Target Number: "+targetNum.toString());
 
+	// function to reset variables, random numbers and reset html to default state
     function gameReset() {
 	    redNum = 0;
 		greenNum = 0;
@@ -42,9 +48,10 @@ $( document ).ready(function() {
 	    $("#targetNumber").html("Target Number: "+targetNum.toString());
     }
 
+    // listen for clicks on crystal images and add value of each to running total
 
-	$(".crystal").on('click', function() {
-		clickColor = $(this).attr('value'); 
+		$(".crystal").on('click', function() {
+		clickColor = $(this).attr('id'); 
 
 	    switch (clickColor) {
 			case "red":
@@ -61,16 +68,18 @@ $( document ).ready(function() {
 			   break;
 		};
 
+		// refresh HTML with running total
 		$("#playerTot").html("Total: "+sumCrystals.toString());
 
+		//check to see if total equals (win) or goes over (lose) target number
         if (sumCrystals > targetNum) {
         		loses = loses + 1;
-        		alert("you lose");
+        		alert("You lost, try again");
         		gameReset();
         		$("#sLoses").html("Loses: "+loses.toString());
         } else if (sumCrystals === targetNum) {
         		wins = wins +1;
-        		alert("you win");
+        		alert("You won!");
         		gameReset();
         		$("#sWins").html("Wins: "+wins.toString());
         }
