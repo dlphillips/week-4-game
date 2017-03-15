@@ -11,7 +11,7 @@ $(document).ready(function () {
 	var wins = 0;
 	var loses = 0;
 
-	$("#gameTitle").html("Crystals Collector").hide().slideDown({duration:2000, queue:false}).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(3000);
+	$("#gameTitle").hide().slideDown({duration:2000, queue:false}).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(3000);
 	$(".sDown").hide().slideDown({duration:2000, queue:false}).fadeIn(500);
 
 	// create and store random numbers from 1 - 12 for each crystal
@@ -55,16 +55,16 @@ $(document).ready(function () {
 
 	    switch (clickColor) {
 			case "red":
-			   sumCrystals = sumCrystals + redNum;
+			   sumCrystals += redNum;
 			   break;
 			case "green":
-			   sumCrystals = sumCrystals + greenNum;
+			   sumCrystals += greenNum;
 			   break;
 			case "blue":
-			   sumCrystals = sumCrystals + blueNum;
+			   sumCrystals += blueNum;
 			  break;
 			case "yellow":
-			   sumCrystals = sumCrystals + yellowNum;
+			   sumCrystals += yellowNum;
 			   break;
 		};
 
@@ -73,13 +73,15 @@ $(document).ready(function () {
 
 		//check to see if total equals (win) or goes over (lose) target number
         if (sumCrystals > targetNum) {
-        		loses = loses + 1;
+        		loses++;
         		alert("You lost, try again");
         		gameReset();
         		$("#sLoses").html("Loses: "+loses.toString());
         } else if (sumCrystals === targetNum) {
-        		wins = wins +1;
+        		wins++;
         		alert("You won!");
+        		var snd = new Audio("https://upload.wikimedia.org/wikipedia/en/2/2a/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg");
+				snd.play();
         		gameReset();
         		$("#sWins").html("Wins: "+wins.toString());
         }
