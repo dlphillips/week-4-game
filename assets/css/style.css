@@ -2,21 +2,11 @@ body {
 	font-family: 'Ubuntu Condensed', sans-serif;	
 }
 
-h1 {
-	font-size: 150%;
-	font-weight: bolder;
-};
-
-p {
-	font-size: 50em;
-	font-weight: bold;
-}
-
 div.crystal {
 	line-height: 150px;
 }
 
-#targetNumber, #playerTot, #youwon {
+#targetNumber, #playerTot, #youwon, #gameTitla {
 	font-size: 300%;
 	font-weight: bolder;
 }

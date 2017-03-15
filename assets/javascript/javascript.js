@@ -9,11 +9,10 @@ $(document).ready(function () {
 	var clickColor = "";
 	var wins = 0;
 	var loses = 0;
-	targetNum = 0;
+	var targetNum = 0;
 	var cClick = new Audio("assets/sounds/click.mp3");
 	var snd = new Audio("assets/sounds/cheer.mp3");
 
-	$("#gameTitle").hide().slideDown({duration:2000, queue:false}).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(3000);
 	$(".sDown").hide().slideDown({duration:2000, queue:false}).fadeIn(2000);
 	$(".sHide").hide();
 
