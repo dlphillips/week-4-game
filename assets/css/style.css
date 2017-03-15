@@ -6,7 +6,7 @@ div.crystal {
 	line-height: 150px;
 }
 
-#targetNumber, #playerTot, #youwon, #gameTitla {
+#targetNumber, #playerTot, #youwon {
 	font-size: 300%;
 	font-weight: bolder;
 }
