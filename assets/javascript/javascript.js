@@ -5,14 +5,17 @@ $(document).ready(function () {
 	var greenNum = 0;
 	var blueNum = 0;
 	var yellowNum = 0;
-	var target = 0;
 	var sumCrystals = 0;
 	var clickColor = "";
 	var wins = 0;
 	var loses = 0;
+	targetNum = 0;
+	var cClick = new Audio("assets/sounds/click.mp3");
+	var snd = new Audio("assets/sounds/cheer.mp3");
 
 	$("#gameTitle").hide().slideDown({duration:2000, queue:false}).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(3000);
-	$(".sDown").hide().slideDown({duration:2000, queue:false}).fadeIn(500);
+	$(".sDown").hide().slideDown({duration:2000, queue:false}).fadeIn(2000);
+	$(".sHide").hide();
 
 	// create and store random numbers from 1 - 12 for each crystal
 	redNum = Math.floor(Math.random() * 12) + 1;
@@ -31,7 +34,6 @@ $(document).ready(function () {
 		greenNum = 0;
 		blueNum = 0;
 		yellowNum = 0;
-		target = 0;
 		sumCrystals = 0;
 		clickColor = "";
 		sumCrystals = 0;
@@ -68,6 +70,8 @@ $(document).ready(function () {
 			   break;
 		};
 
+		cClick.play();
+
 		// refresh HTML with running total
 		$("#playerTot").html("Total: "+sumCrystals.toString());
 
@@ -76,14 +80,15 @@ $(document).ready(function () {
         		loses++;
         		alert("You lost, try again");
         		gameReset();
-        		$("#sLoses").html("Loses: "+loses.toString());
+        		$("#sLoses").html("Loses: " + loses.toString());
         } else if (sumCrystals === targetNum) {
         		wins++;
-        		alert("You won!");
-        		var snd = new Audio("https://upload.wikimedia.org/wikipedia/en/2/2a/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg");
-				snd.play();
+        		// alert("You won!");
+        		// $(".sHide").slideDown({duration:2000, queue:false}).fadeIn(2000);
+        		$(".sHide").hide().slideDown(2000).slideUp(3000);
+        		snd.play();
         		gameReset();
-        		$("#sWins").html("Wins: "+wins.toString());
+        		$("#sWins").html("Wins: " + wins.toString());
         }
     });
 
